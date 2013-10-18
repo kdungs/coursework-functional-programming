@@ -1,0 +1,36 @@
+\documentclass[a4paper]{scrartcl}
+\input{../header.tex}
+
+\subject{Funktionale Programmierung WS 2013/14}
+\title{Übungsblatt 1}
+\author{Kevin Dungs\thanks{kevin.dungs@udo.edu}}
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 1.1}
+\begin{minted}{haskell}
+    f1 :: Int -> Int
+    f1 x = x + 1
+    
+    f2 :: (Int, Int) -> Int
+    f2 (x, y) = x * y + 1 + x
+    
+    f3 :: Int -> (Int -> Int) -> Int
+    f3 x y = y (x * x)
+    
+    f4 :: (a -> b) -> (b -> a) -> (a -> b)
+    f4 f g = f . g . f
+\end{minted}
+
+\section*{Aufgabe 1.2}
+\paragraph{1)}
+\begin{minted}{haskell}
+    (((add4Ints 1) 2) 3) 4
+\end{minted}
+\paragraph{2)}
+\begin{minted}{haskell}
+    add4Ints :: Int -> (Int -> (Int -> (Int -> Int)))
+\end{minted}
+
+\end{document}
