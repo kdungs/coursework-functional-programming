@@ -1,0 +1,38 @@
+% --- packages ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[ngerman]{babel}
+\usepackage[backend=biber,style=ieee,sorting=none]{biblatex}
+    \addbibresource{references.bib}
+\usepackage{booktabs}
+\usepackage{braket}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{fontspec}
+    \setmainfont[Ligatures=TeX]{Tex Gyre Pagella}
+    \setmonofont[Ligatures=TeX]{Anonymous Pro}
+\usepackage{graphicx}
+\usepackage[italic]{hepnicenames}
+\usepackage[pdfusetitle,unicode]{hyperref}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{minted}
+\usepackage{subcaption}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+        \setmathfont{Tex Gyre Pagella Math}
+\usepackage{xfrac}
+
+% --- options ---
+\setlength{\parindent}{0pt}  % no stupid indentation
+
+% fix biblatex stuff (add collaboration, et al. etc)
+\DeclareSourcemap{\maps[datatype=bibtex,overwrite=true]{\map{\step[fieldsource=Collaboration, final=true]\step[fieldset=usera, origfieldval, final=true]}}}
+\renewbibmacro*{author}{\iffieldundef{usera}{\printnames{author}}{\printfield{usera}\addcomma\addspace\printnames{author}}}
+
+% --- commands ---
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\mean}{\langle}{\rangle}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\renewcommand{\i}{\mathrm{i}}
+\DeclareRobustCommand{\e}{\ensuremath{\mathrm{e}}}
