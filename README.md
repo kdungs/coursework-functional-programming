@@ -1,4 +1,4 @@
-functional-programming-class
-============================
+# Functional Programming
 
-Classwork for my functional programming class.
+Coursework for my functional programming class.
+Code is written in Haskell.
