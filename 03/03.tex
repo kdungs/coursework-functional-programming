@@ -1,0 +1,63 @@
+\documentclass[a4paper]{scrartcl}
+\input{../header.tex}
+
+\subject{Funktionale Programmierung WS 2013/14}
+\title{Übungsblatt 3}
+\author{Kevin Dungs\thanks{kevin.dungs@udo.edu}}
+
+\begin{document}
+\maketitle
+
+\section{Aufgabe 3.1}
+\paragraph{1)}
+\begin{minted}{haskell}
+    Int -> (Bool, a) -> (a, Int)
+  = (Int -> (Bool, a)) -> (a, Int)
+\end{minted}
+
+\paragraph{2)}
+\begin{minted}{haskell}
+    Int -> Bool -> (Int, Int) -> Int
+  = ((Int -> Bool) -> (Int, Int)) -> Int
+\end{minted}
+
+\paragraph{3)}
+\begin{minted}{haskell}
+    a -> (a -> b -> c) -> b -> a
+  = ((a -> ((a -> b) -> c)) -> b) -> a
+\end{minted}
+
+
+\section{Aufgabe 3.2}
+\paragraph{1)}
+\begin{minted}{haskell}
+    (\f -> f . f) $ \x -> (+3) x
+  = \x -> ((+3) . (+3)) x
+  = x + 6
+\end{minted}
+
+\paragraph{2)}
+\begin{minted}{haskell}
+    (\x -> 4 * x) . (\y -> 3 + y)
+  = \x -> 4 * (3 + x)
+\end{minted}
+
+
+\section{Aufgabe 3.3}
+\paragraph{1)}
+\begin{minted}{haskell}
+    \(f, g) p x -> if p x then f x else g x
+ :: ((a -> b), (a -> b)) -> (a -> Bool) -> a -> b
+\end{minted}
+
+\paragraph{2)}
+\begin{minted}{haskell}
+    (curry (\(x, y) -> if x < y then y else x)) 3
+ :: Int -> Int
+\end{minted}
+
+
+\section{Aufgabe 3.4}
+\inputminted{haskell}{update.hs}
+
+\end{document}
