@@ -1,0 +1,67 @@
+\documentclass[a4paper]{scrartcl}
+\input{../header.tex}
+
+\subject{Funktionale Programmierung WS 2013/14}
+\title{Übungsblatt 2}
+\author{Kevin Dungs\thanks{kevin.dungs@udo.edu}}
+
+\begin{document}
+\maketitle
+
+\section{Aufgabe 2.1}
+\paragraph{1)}
+\begin{minted}{haskell}
+    (\x -> 4 * x) $ (\y -> 3 + y) 1
+  = (\x -> 4 * x) $ 4
+  = 4 * 4 = 16
+\end{minted}
+
+\paragraph{2)}
+\begin{minted}{haskell}
+    (\x -> 4 + x + (\x -> 3 + x) 3) 1
+  = 4 + 1 + (\x -> 3 + x) 3
+  = 5 + (\x -> 3 + x)
+  = 5 + 3 + 3 = 11
+\end{minted}
+
+\paragraph{3)}
+\begin{minted}{haskell}
+    (\f -> (f . f) 2) (*3)
+  = ((*3) . (*3)) 2
+  = 9 * 2 = 18
+\end{minted}
+
+\paragraph{4)}
+\begin{minted}{haskell}
+    (\x f -> x + f x) 5 (*3)
+  = (\f -> 5 + f 5) (*3)
+  = 5 + 3 * 5 = 20
+\end{minted}
+
+
+\section{Aufgabe 2.2}
+\paragraph{1}
+\begin{minted}{haskell}
+    \x y -> if x y then y else y + 2 :: (Int -> Bool) -> Int -> Int
+\end{minted}
+
+\paragraph{2)}
+\begin{minted}{haskell}
+    \f -> (f . f) 2 :: (Int -> Int) -> Int
+\end{minted}
+
+\paragraph{3)}
+\begin{minted}{haskell}
+    flip (.) :: (a -> b) -> (b -> c) -> a -> c
+\end{minted}
+
+\paragraph{4)}
+\begin{minted}{haskell}
+    uncurry (+) :: (Int, Int) -> Int
+\end{minted}
+
+
+\section{Aufgabe 2.3}
+\inputminted{haskell}{collatz.hs}
+
+\end{document}
