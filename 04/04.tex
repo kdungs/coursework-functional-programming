@@ -1,0 +1,49 @@
+\documentclass[a4paper]{scrartcl}
+\input{../header.tex}
+
+\subject{Funktionale Programmierung WS 2013/14}
+\title{Übungsblatt 4}
+\author{Kevin Dungs\thanks{kevin.dungs@udo.edu}}
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 4.1}
+\begin{minted}{haskell}
+    dropWhile (/=4) :: [Int] -> [Int]
+    last . ([4]++) :: [Int] -> Int
+    \x -> (reverse . map (\x -> 4*x)) x :: [Int] -> [Int]
+\end{minted}
+
+\section*{Aufgabe 4.2}
+\begin{minted}{haskell}
+    fromTo :: Int -> Int -> [Int]
+    fromTo a b = [a .. b]
+
+    squares :: Int -> [Int]
+    squares n = [x ^ 2 | x <- [1 .. n]]
+
+    conjunction :: [Bool] -> Bool
+    conjunction xs = all id xs
+\end{minted}
+
+\section*{Aufgabe 4.3}
+\begin{minted}{haskell}
+collatz :: Int -> Int
+collatz n
+    | n `mod` 2 == 0 = n `div` 2
+    | otherwise      = 3 * n + 1
+
+collatzSequence :: Int -> [Int]
+collatzSequence n = takeWhile (/=1) (iterate collatz n)
+\end{minted}
+
+\section*{Aufgabe 4.4}
+\begin{minted}{haskell}
+    applyToValue :: [a -> a -> a] -> a -> [a -> a]
+    applyToValue fs x = [f x | f <- fs]
+\end{minted}
+
+
+
+\end{document}
