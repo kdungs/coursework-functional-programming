@@ -1,0 +1,68 @@
+\documentclass[a4paper]{scrartcl}
+\input{../header.tex}
+
+\subject{Funktionale Programmierung WS 2013/14}
+\title{Übungsblatt 5}
+\author{Kevin Dungs\thanks{kevin.dungs@udo.edu}}
+
+\begin{document}
+\maketitle
+
+
+\section*{Aufgabe 5.1}
+\begin{minted}{haskell}
+span (\y = y /= '5') :: [Char] -> ([Char], [Char])
+head . map (\c -> c + 1) . takeWhile (\c -> c < 5) :: [Int] -> Int
+map (map (\x -> 5 * x)) :: [[Int]] -> [[Int]]
+\end{minted}
+
+
+\section*{Aufgabe 5.2}
+\begin{minted}{haskell}
+    sumr [1, 2, 3, 4]
+\end{minted}
+wird folgendermaßen ausgeführt:
+\begin{align*}
+    4 &+ 0 & [1, 2, 3, 4] \\
+    3 &+ 4 & [1, 2, 3] \\
+    2 &+ 7 & [1, 2] \\
+    1 &+ 9 & [1] \\
+    10
+\end{align*}
+
+während
+\begin{minted}{haskell}
+    suml [1, 2, 3, 4]
+\end{minted}
+wie folgt ausgeführt wird:
+\begin{align*}
+    0 &+ 1 & [1, 2, 3, 4] \\
+    1 &+ 2 & [2, 3, 4] \\
+    3 &+ 3 & [3, 4] \\
+    6 &+ 4 & [4] \\
+    10
+\end{align*}
+
+
+\section*{Aufgabe 5.3}
+\paragraph{1)}
+\begin{minted}{haskell}
+foldFor :: (Enum a) => b -> a -> a -> (b -> a -> b) -> b
+foldFor x0 i0 i1 f = foldl (\acc i -> f acc i) x0 [i0 .. i1]
+\end{minted}
+
+\paragraph{2)}
+\begin{minted}{haskell}
+foldWhile :: (a -> Int -> a) -> (Int -> Bool) -> a -> Int -> a
+foldWhile f a x0 i0 = foldl (\acc i -> f acc i) x0 $ takeWhile a [i0..]
+\end{minted}
+
+
+\section*{Aufgabe 5.4}
+\inputminted{haskell}{binary.hs }
+
+
+\section*{Aufgabe 5.5}
+\inputminted{haskell}{zipper.hs}
+
+\end{document}
