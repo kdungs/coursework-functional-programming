@@ -47,14 +47,14 @@ wie folgt ausgeführt wird:
 \section*{Aufgabe 5.3}
 \paragraph{1)}
 \begin{minted}{haskell}
-foldFor :: (Enum a) => b -> a -> a -> (b -> a -> b) -> b
-foldFor x0 i0 i1 f = foldl (\acc i -> f acc i) x0 [i0 .. i1]
+foldFor :: (Enum b) => a -> b -> b -> (a -> b -> a) -> a
+foldFor x0 i0 i1 f = foldl f x0 [i0 .. i1]
 \end{minted}
 
 \paragraph{2)}
 \begin{minted}{haskell}
-foldWhile :: (a -> Int -> a) -> (Int -> Bool) -> a -> Int -> a
-foldWhile f a x0 i0 = foldl (\acc i -> f acc i) x0 $ takeWhile a [i0..]
+foldWhile :: (Enum b) => (a -> b -> a) -> (b -> Bool) -> a -> b -> a
+foldWhile f a x0 i0 = foldl f x0 $ takeWhile a [i0..]
 \end{minted}
 
 
