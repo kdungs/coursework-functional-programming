@@ -1,0 +1,19 @@
+\documentclass[a4paper]{scrartcl}
+\input{../header.tex}
+
+\subject{Funktionale Programmierung WS 2013/14}
+\title{Übungsblatt 6}
+\author{Kevin Dungs\thanks{kevin.dungs@udo.edu}}
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 6.1}
+\begin{minted}{haskell}
+    map (foldr (+) 0) :: [[Int]] -> [Int]
+    any (<100) . map (\x -> (x - 1) * 6) :: [Int] -> Bool
+    zipWith ($) [(+), (*)] :: [Int] -> [Int -> Int]
+\end{minted}
+
+
+\end{document}
