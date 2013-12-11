@@ -10,6 +10,9 @@ clean:
 	rm -f *.aux
 	rm -f *.bcf
 	rm -f *.log
+	rm -f *.hi
+	rm -f *.o
 	rm -f *.out
 	rm -f *.run.xml
 	rm -f $(NUM).pdf
+	rm -f binary zipper
