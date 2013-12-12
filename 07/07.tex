@@ -1,0 +1,24 @@
+\documentclass[a4paper]{scrartcl}
+\input{../header.tex}
+
+\subject{Funktionale Programmierung WS 2013/14}
+\title{Übungsblatt 7}
+\author{Kevin Dungs\thanks{kevin.dungs@udo.edu}}
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 7.1}
+\begin{minted}{haskell}
+    foldl (\acc x -> acc || (x `mod` 7 == 0)) False :: [Int] -> Bool
+    Cons 7 :: List Int -> List Int
+    foldr Cons Nil :: [a] -> List a
+\end{minted}
+
+\section*{Aufgabe 7.2}
+\inputminted{haskell}{company.hs}
+
+\section*{Aufgabe 7.3}
+\inputminted{haskell}{bool.hs}
+
+\end{document}
